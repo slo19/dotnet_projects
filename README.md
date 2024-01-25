@@ -4,3 +4,4 @@ Repository made for storing some different projects built with ASP.NET Core for 
 ## List of projects:
 
  - [ ] Authentication and Authorization System
+ - [ ] Sports Store
