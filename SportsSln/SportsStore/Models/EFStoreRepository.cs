@@ -1,5 +1,3 @@
-using SportsStore.Context;
-
 namespace SportsStore.Models {
     public class EFStoreRepository : IStoreRepository {
         private StoreDbContext context;

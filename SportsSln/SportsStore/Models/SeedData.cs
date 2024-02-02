@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using SportsStore.Context;
 
 namespace SportsStore.Models {
     public static class SeedData {
