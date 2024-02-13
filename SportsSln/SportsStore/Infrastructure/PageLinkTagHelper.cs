@@ -7,7 +7,7 @@ using SportsStore.Models.ViewModels;
 
 namespace SportsStore.Infrastructure {
     [HtmlTargetElement("div", Attributes = "page-model")]
-    public class PageLinkTagHelper: PageLinkTagHelper {
+    public class PageLinkTagHelper: TagHelper {
         private IUrlHelperFactory urlHelperFactory;
 
         public PageLinkTagHelper(IUrlHelperFactory helperFactory) {
