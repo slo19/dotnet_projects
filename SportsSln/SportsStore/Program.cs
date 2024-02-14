@@ -13,7 +13,7 @@ builder.Services.AddDbContext<StoreDbContext>(opts => {
 });
 
 builder.Services.AddScoped<IStoreRepository, EFStoreRepository>();
-builder.Services.AddScoped<IOrderRepository, EFOrderRepository>();
+
 
 builder.Services.AddRazorPages();
 builder.Services.AddDistributedMemoryCache();
@@ -41,7 +41,10 @@ app.UseRequestLocalization(opts => {
 });
 
 app.UseStaticFiles();
-app.UseSession();
+app.MapControllerRoute("pagination",
+    "Products/Page{productPage}",
+    new { Controller = "Home", action = "Index" });
+/*app.UseSession();
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -59,7 +62,7 @@ app.MapControllerRoute("category", "{category}",
 app.MapControllerRoute("pagination",
     "Products/Page{productPage}",
     new { Controller = "Home", action = "Index", productPage = 1 });
-
+*/
 app.MapDefaultControllerRoute();
 app.MapRazorPages();
 app.MapBlazorHub();
