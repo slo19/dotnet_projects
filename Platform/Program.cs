@@ -9,5 +9,5 @@ app.Use(async (context, next) => {
     await next();
 });
 app.MapGet("/", () => "Hello World!");
-
+app.UseMiddleware<Platform.QueryStringMiddleWare>();
 app.Run();
