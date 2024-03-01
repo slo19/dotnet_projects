@@ -1,10 +1,10 @@
 namespace Platform {
   public class Population {
-    private ReequestDelegate? next;
+    private RequestDelegate? next;
     
     public Population() {}
 
-    public Population(ReequestDelegate nextDelegate) {
+    public Population(RequestDelegate nextDelegate) {
       next = nextDelegate;
     }
 
@@ -26,7 +26,7 @@ namespace Platform {
             break;
         }
         if(pop.HasValue) {
-          await context.Reponse
+          await context.Response
             .WriteAsync($"City: {city}, Population: {pop}");
           return;
         }

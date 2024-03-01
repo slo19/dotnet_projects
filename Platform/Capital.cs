@@ -1,10 +1,10 @@
 namespace Platform {
   public class Capital {
-    private ReequestDelegate? next;
+    private RequestDelegate? next;
     
     public Capital() {}
 
-    public Capital(ReequestDelegate nextDelegate) {
+    public Capital(RequestDelegate nextDelegate) {
       next = nextDelegate;
     }
 
@@ -15,10 +15,10 @@ namespace Platform {
         string? capital = null;
         string country = parts[1];
         switch (country.ToLower()) {
-          case "Egypt":
+          case "egypt":
             capital = "Cairo";
             break;
-          case "Hungary":
+          case "hungary":
             capital = "Budapest";
             break;
           case "monaco":
@@ -26,8 +26,8 @@ namespace Platform {
             break;
         }
         if(capital != null) {
-          await context.Reponse
-            .WriteAsync($"{capital} is the capital {country}");
+          await context.Response
+            .WriteAsync($"{capital} is the capital of {country}");
           return;
         }
       }
