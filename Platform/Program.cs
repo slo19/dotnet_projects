@@ -3,21 +3,20 @@ using Platform;
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-//app.UseMiddleware<Population>();
-//app.UseMiddleware<Capital>();
-
-app.UseRouting();
-
-app.UseEndpoints(endpoints => {
-    endpoints.MapGet("routing", async context => {
-        await context.Response.WriteAsync("Request Was Routed");
-    });
-    endpoints.MapGet("capital/egypt", new Capital().Invoke);
-    endpoints.MapGet("population/paris", new Population().Invoke);
+app.MapGet("{first}/{second}/{third}", async context => {
+    await context.Response.WriteAsync("Request was routed\n");
+    foreach (var kvp in context.Request.RouteValues) 
+    {
+        await context.Response.WriteAsync($"{kvp.Key}: {kvp.Value}\n");
+    }
 });
 
-app.Run(async (context) => {
-   await context.Response.WriteAsync("Terminal Middleware Reached"); 
-});
+app.MapGet("capital/{country}", Capital.Endpoint);
+app.MapGet("population/{city}", Population.Endpoint)
+    .WithMetadata(new RouteNameMetadata("population"));
+
+//app.Run(async (context) => {
+//   await context.Response.WriteAsync("Terminal Middleware Reached"); 
+//});
 
 app.Run();
