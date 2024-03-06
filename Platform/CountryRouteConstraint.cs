@@ -1,4 +1,4 @@
-namespace CountryRouteConstraint
+namespace Platform
 {
     public class CountryRouteConstraint : IRouteConstraint {
       private static string[] countries = {"egypt", "hungary", "monaco"};
