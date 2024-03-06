@@ -3,7 +3,7 @@ using Platform;
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.MapGet("files/{filename}.{ext}", async context => {
+app.MapGet("{first:alpha:length(3)}/{second:bool}/", async context => {
     await context.Response.WriteAsync("Request was routed\n");
     foreach (var kvp in context.Request.RouteValues) 
     {
@@ -11,7 +11,7 @@ app.MapGet("files/{filename}.{ext}", async context => {
     }
 });
 
-app.MapGet("capital/{country=Egypt}", Capital.Endpoint);
+app.MapGet("capital/{country:regex(^egypt|hungary|monaco$)}", Capital.Endpoint);
 app.MapGet("size/{city?}", Population.Endpoint)
     .WithMetadata(new RouteNameMetadata("population"));
 
