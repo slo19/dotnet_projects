@@ -18,7 +18,7 @@ namespace Microsoft.AspNetCore.Builder
         ParameterInfo[] methodParams = methodInfo!.GetParameters();
 
         app.MapGet(path, context => {
-          T endpointInstance = ActivatorUtilities.CreateInstance(context.RequestServices);
+          T endpointInstance = ActivatorUtilities.CreateInstance<T>(context.RequestServices);
             
           return (Task)methodInfo.Invoke(endpointInstance!,
             methodParams.Select(p => p.ParameterType == typeof(HttpContext) 
